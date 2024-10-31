@@ -1,1 +1,1 @@
-# Sqta_ProjectEra
+# STQA_ProjectEra
