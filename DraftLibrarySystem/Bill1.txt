@@ -1,0 +1,3 @@
+Title: "Hamlet", Quantities: 2, OriginalPrice 14.99, Price: 29.98
+
+Total price: 29.98 Date: Tue Dec 31 14:47:51 CET 2024
