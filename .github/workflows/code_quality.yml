@@ -1,0 +1,29 @@
+name: Qodana Workflow
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Cache Qodana
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/qodana
+          key: qodana-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/*.java') }}
+          restore-keys: |
+            qodana-${{ runner.os }}-
+
+      - name: Run Qodana
+        uses: JetBrains/qodana-action@v2024.2
+        with:
+          linter: jetbrains/qodana-jvm:2024.2
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
